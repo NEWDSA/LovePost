@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
+
 <head>
     <meta charset="UTF-8">
     <meta name=”viewport” content=”width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0,
         user-scalable=yes” />
-        <link rel="icon" href="favicon1.ico">
+    <link rel="icon" href="favicon1.ico">
     <title>LovePost</title>
     <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
     <script>
@@ -13,16 +14,16 @@
         var t;
         function time() {
             var deg = rotateindex + 'deg';
-            var color='#'
-            var cres='#';
-            for (let i = 0 ; i < 3; ++i){
-            color += parseInt(Math.random() * 256).toString(16)
-            // cres+=parseInt(Math.random() * 256).toString(16)
-			}
+            var color = '#'
+            var cres = '#';
+            for (let i = 0; i < 3; ++i) {
+                color += parseInt(Math.random() * 256).toString(16)
+                // cres+=parseInt(Math.random() * 256).toString(16)
+            }
             $(".cricle").css('transform', 'rotate(' + deg + ')')
             // $(".cricle").css('border', '20px solid '+color)
-            $(".cricle").css('border', '20px solid '+color)
-            $("body").css('background','white')
+            $(".cricle").css('border', '20px solid ' + color)
+            $("body").css('background', 'white')
             //設置隨機圖片
             // $(".pic").attr("src",)
             rotateindex++;
@@ -31,11 +32,11 @@
                 rotateindex = 0;
 
             }
-            t = setTimeout("time()",50)
+            t = setTimeout("time()", 50)
         }
         $(document).ready(function () {
+            var audios = document.getElementById("myplay");
             $(".cricle").hover(function () {
-
                 var audio = document.getElementById("myplay");
                 document.addEventListener('click', () => {
 
@@ -48,7 +49,12 @@
                     }
                 });
             })
+            audios.onended = function () {
+                alert("音频播放完成");
+                setTimeout("time()", "")
+            };
         })
+
 
     </script>
 </head>
@@ -98,7 +104,7 @@
     }
 </style>
 
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
     <div class="cricle">
         <img class="pic" src="cat.jpg" alt="cat">
     </div>
